@@ -56,11 +56,13 @@
         
         //defining the maker style
         const simpleMarkerSymbol = {
-          type: "simple-marker",
-          color: [0, 0, 139],  // Color of blues rock
-          outline: {
-            color: [255, 255, 255], // White
-            width: 1
+          type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+          style: "x",
+          color: "red",
+          size: "10px",  // pixels
+          outline: {  // autocasts as new SimpleLineSymbol()
+            color: [ 255, 255, 0 ],
+            width: 3  // points
           }
         };
 
@@ -178,17 +180,6 @@
 
         // Add the widget to the view
         view.ui.add(editor, "top-right");
-
-        let symbol = {
-          type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
-          style: "x",
-          color: "red",
-          size: "10px",  // pixels
-          outline: {  // autocasts as new SimpleLineSymbol()
-            color: [ 255, 255, 0 ],
-            width: 3  // points
-          }
-        };
 
     });
   </script>

@@ -27,9 +27,11 @@
 
       "esri/widgets/Editor",
 
-      "esri/symbols/SimpleMarkerSymbol"
+      "esri/symbols/SimpleMarkerSymbol",
 
-    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor, SimpleMarkerSymbol) {
+      "esri/symbols/PolygonSymbol3D"
+
+    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor, SimpleMarkerSymbol, PolygonSymbol3D) {
 
       esriConfig.apiKey = "AAPKfb3b968ef66d4c848e795b3dd01897e8uTic-7qcXbjlpUVMGReQlWKWAjnWq5pH5r7mLxpcFbX1tfR5Y4bLBPhLOwFOm7NL";
       const map = new Map({
@@ -176,6 +178,16 @@
         // Add the widget to the view
         view.ui.add(editor, "top-right");
 
+        let polygon1 = {
+        type: "polygon-3d",  // autocasts as new PolygonSymbol3D()
+        symbolLayers: [{
+          type: "extrude",   // autocasts as new ExtrudeSymbol3DLayer()
+          size: 1000,        // Height of the extrusion in meters
+          material: { color: "blue" }
+          }]
+        };
+
+        graphicsLayer.add(polygon1);
     });
   </script>
 

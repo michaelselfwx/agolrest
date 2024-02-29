@@ -29,9 +29,11 @@
 
       "esri/symbols/SimpleMarkerSymbol",
 
-      "esri/geometry/Polygon"
+      "esri/geometry/Polygon",
 
-    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor, SimpleMarkerSymbol, Polygon) {
+      "esri/geometry/Polyline"
+
+    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor, SimpleMarkerSymbol, Polygon, Polyline) {
 
       esriConfig.apiKey = "AAPKfb3b968ef66d4c848e795b3dd01897e8uTic-7qcXbjlpUVMGReQlWKWAjnWq5pH5r7mLxpcFbX1tfR5Y4bLBPhLOwFOm7NL";
       
@@ -65,6 +67,30 @@
       // Create a new GraphicsLayer and add the graphic to it
       var graphicsLayer = new GraphicsLayer();
       graphicsLayer.add(polygonGraphic);
+
+      // Create a polyline geometry
+      var polyline = new Polyline({
+        paths: [
+          [-97.669889, 30.194528], // Bud Dryden Airport
+          [-97.669722, 30.194444]  // Austin Bergstrom International Airport
+        ]
+      });
+
+      // Create a symbol for rendering the polyline
+      var lineSymbol = {
+        type: "simple-line", // autocasts as SimpleLineSymbol()
+        color: [226, 119, 40],
+        width: 4
+      };
+
+      // Add the geometry and symbol to a new graphic
+      var polylineGraphic = new Graphic({
+        geometry: polyline,
+        symbol: lineSymbol
+      });
+
+      // Add the graphic to the GraphicsLayer
+      graphicsLayer.add(polylineGraphic);
 
       // Create the map with the GraphicsLayer
       var map = new Map({

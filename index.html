@@ -150,7 +150,7 @@
       // Define a pop-up for usaeduLayer
       const popupEduusa = {
         "title": "EDUs",
-        "content": "<b>Name:</b> {NAME}<br><b>Total Enrollment:</b> {TOT_ENROLL}<br>"
+        "content": "<b>Name:</b> {INSTNM}<br><b>Sector:</b> {SECTOR}<br>"
       }
 
       //adding the const for the feature layer
@@ -158,7 +158,7 @@
         url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer",
 
         //adding the popup here
-        outFields: ["NAME","TOT_ENROLL"],
+        outFields: ["INSTNM","SECTOR"],
         popupTemplate: popupEduusa
       });
 

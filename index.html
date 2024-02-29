@@ -77,10 +77,6 @@
         center: [-98, 35] // Sets the center point of view in lon/lat
       });
 
-      //adding the const for the graphicslayer
-      const graphicsLayer = new GraphicsLayer();
-      map.add(graphicsLayer);
-
       //defining the geomeotry of the point
       const point = { //Create a point
         type: "point",
@@ -208,7 +204,7 @@
 
       // Add the widget to the view
       view.ui.add(editor, "top-right");
-      
+
     });
   </script>
 

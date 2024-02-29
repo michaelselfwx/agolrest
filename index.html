@@ -38,9 +38,11 @@
       // Create a polygon geometry
       var polygon = new Polygon({
         rings: [
-          [-111.3, 52.68],
-          [-98, 49.5],
-          [-93.94, 29.89]
+          [-97.736667, 30.282768], // Top left corner
+          [-97.736667, 30.283768], // Bottom left corner
+          [-97.735667, 30.283768], // Bottom right corner
+          [-97.735667, 30.282768], // Top right corner
+          [-97.736667, 30.282768]  // Closing the polygon at the top left corner
         ]
       });
 
@@ -74,7 +76,7 @@
         container: "viewDiv", // Reference to the scene div created in step 5
         map: map, // Reference to the map object created before the scene
         zoom: 13, // Sets the zoom level based on level of detail (LOD)
-        center: [-98, 35] // Sets the center point of view in lon/lat
+        center: [-97.7431, 30.2672] // Sets the center point of view in lon/lat
       });
 
       //defining the geomeotry of the point

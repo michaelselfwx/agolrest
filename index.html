@@ -106,14 +106,14 @@
       });
 
       //defining the geomeotry of the point
-      var point = { //Create a point
+      const point = { //Create a point
         type: "point",
         longitude: -97.750689,    //long lat of Stevie Ray Vaughan Statue
         latitude: 30.263098 
       };
       
       //defining the maker style
-      var simpleMarkerSymbol = {
+      const simpleMarkerSymbol = {
         type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
         style: "x",
         color: "red",
@@ -137,7 +137,7 @@
       //creating the point
       const pointGraphic = new Graphic({
         type: "point",
-        symbol: simpleMarkerSymbol,
+        symbol: point,
 
         //adding popup properites
         attributes: attributes,

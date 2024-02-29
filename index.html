@@ -72,7 +72,7 @@
       var polyline = new Polyline({
         paths: [
           [-98.1216, 29.7083], // Bud Dryden Airport
-          [-97.6698, 30.1945]  // Austin Bergstrom International Airport
+          [-97.6698, 30.1945]  // New Braunfels
         ]
       });
 
@@ -106,14 +106,14 @@
       });
 
       //defining the geomeotry of the point
-      const point = { //Create a point
+      var point = { //Create a point
         type: "point",
         longitude: -97.750689,    //long lat of Stevie Ray Vaughan Statue
         latitude: 30.263098 
       };
       
       //defining the maker style
-      const simpleMarkerSymbol = {
+      var simpleMarkerSymbol = {
         type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
         style: "x",
         color: "red",

@@ -192,7 +192,31 @@
           expression: "$feature.Fac_Name"
         }
       };
+      //setting up the icon
+      const heliRenderer = {
+            type: "simple",
+            symbol: simpleMarkerSymbol,
+            }
 
+      const heliLabels = {
+        symbol: {
+          type: "text",
+          color: "#MMMMMM",
+          haloColor: "#5E8D74",
+          haloSize: "2px",
+          font: {
+            size: "12px",
+            family: "Noto Sans",
+            style: "italic",
+            weight: "normal"
+          }
+        },
+
+        labelPlacement: "above-center",
+        labelExpressionInfo: {
+          expression: "$feature.Fac_Name"
+        }
+      };
       const airportLayer = new FeatureLayer({
         url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
         renderer: airportRenderer,  //calling the icon
@@ -206,6 +230,20 @@
 
       //adding the feature layer to the map
       map.add(airportLayer);
+
+      const heliLayer = new FeatureLayer({
+        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
+        renderer: heliRenderer,  //calling the icon
+
+        definitionExpression: "Fac_Type = 'HELIPORT'", //adding sql to filter for airports
+
+        labelingInfo: [heliLabels] //adding the labels 
+
+
+      });
+
+      //adding the feature layer to the map
+      map.add(heliLayer);
 
       //adding the const for the feature layer
       const myAirports = new FeatureLayer({

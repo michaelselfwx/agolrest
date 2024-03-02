@@ -96,10 +96,6 @@
       var fillSymbol = {
         type: "simple-fill", // autocasts as new SimpleFillSymbol()
         color: [227, 139, 79, 0.8],
-        outline: { // autocasts as new SimpleLineSymbol()
-          color: [255, 255, 255],
-          width: 1
-        }
       };
 
       // Add the geometry and symbol to a new graphic
@@ -119,6 +115,31 @@
         latitude: 30.263098 
       };
       
+      //defining popup properties
+      const popupTemplate = {
+        title: "{Name}",
+        content: "{Description}"
+      }
+      const attributes = {
+        Name: "Stevie Ray Vaughan Statue",
+        Description: "A bronze sculpture of Stevie Ray Vaughan by Ralph Helmick"
+      }
+
+      //creating the point
+      const pointGraphic = new Graphic({
+        type: "point",
+        symbol: fillSymbol,
+
+        //adding popup properites
+        attributes: attributes,
+        popupTemplate: popupTemplate
+      });
+      
+      //adding the point to the graphicsLayer
+      graphicsLayer.add(pointGraphic);
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
       //defining the maker style
       const simpleMarkerSymbol = {
         type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
@@ -141,29 +162,7 @@
         }
       };
 
-      //defining popup properties
-      const popupTemplate = {
-        title: "{Name}",
-        content: "{Description}"
-      }
-      const attributes = {
-        Name: "Stevie Ray Vaughan Statue",
-        Description: "A bronze sculpture of Stevie Ray Vaughan by Ralph Helmick"
-      }
-
-      //creating the point
-      const pointGraphic = new Graphic({
-        type: "point",
-        symbol: fillSymbol,
-
-        //adding popup properites
-        attributes: attributes,
-        popupTemplate: popupTemplate
-      });
-        
-      //adding the point to the graphicsLayer
-      graphicsLayer.add(pointGraphic);
-
+    
       // Define a pop-up for usaeduLayer
       const popupEduusa = {
         "title": "EDUs",

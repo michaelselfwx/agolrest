@@ -66,6 +66,13 @@
         paths: paths,
       });
 
+      // Create a symbol for rendering the polyline
+      var lineSymbol = {
+        type: "simple-line", // autocasts as SimpleLineSymbol()
+        color: [0, 0, 0],
+        width: 4
+      };
+      
       // Add the geometry and symbol to a new graphic
       const polylineGraphic = new Graphic({
         geometry: polyline,

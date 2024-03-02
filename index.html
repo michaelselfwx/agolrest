@@ -174,8 +174,21 @@
       //setting up the icon
       const myairportRenderer = {
       type: "simple",
-      symbol: point,
+      symbol: point2,
       }
+
+      //creating the point
+      const mypointGraphic = new Graphic({
+        type: "point",
+        symbol: point2,
+
+        //adding popup properites
+        attributes: attributes,
+        popupTemplate: popupTemplate
+      });
+        
+      //adding the point to the graphicsLayer
+      graphicsLayer.add(mypointGraphic);
 
       //const to make the airport labels
       const airportLabels = {
@@ -244,7 +257,7 @@
       //adding the feature layer to the map
       map.add(myAirports);
 
-      
+
       // Set the point layer's LayerInfo
       const pointInfos = {
         layer: myAirports

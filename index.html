@@ -72,7 +72,7 @@
         color: [0, 0, 0],
         width: 4
       };
-      
+
       // Add the geometry and symbol to a new graphic
       const polylineGraphic = new Graphic({
         geometry: polyline,
@@ -145,7 +145,8 @@
       
       //adding the point to the graphicsLayer
       graphicsLayer.add(pointGraphic);
-
+      map.add(graphicsLayer);
+      
 //////////////////////////////////////////////////////////////////////////////////////////
 
       //defining the maker style

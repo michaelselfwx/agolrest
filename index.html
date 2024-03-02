@@ -116,7 +116,6 @@
       const simpleMarkerSymbol = {
         type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
         style: "x",
-        color: "black",
         size: "10px",  // pixels
         outline: {  // autocasts as new SimpleLineSymbol()
           color: [ 255, 255, 0 ],
@@ -144,8 +143,8 @@
         popupTemplate: popupTemplate
       });
         
-        //adding the point to the graphicsLayer
-        graphicsLayer.add(pointGraphic);
+      //adding the point to the graphicsLayer
+      graphicsLayer.add(pointGraphic);
 
       // Define a pop-up for usaeduLayer
       const popupEduusa = {
@@ -167,6 +166,12 @@
 
       //setting up the icon
       const airportRenderer = {
+      type: "simple",
+      symbol: simpleMarkerSymbol,
+      }
+
+      //setting up the icon
+      const myairportRenderer = {
       type: "simple",
       symbol: simpleMarkerSymbol,
       }
@@ -227,7 +232,7 @@
       // Define a pop-up for myairportLayer
       const popupmyAirport = {
         "title": "My Airports",
-        "content": "<b>Region_Cod:</b> {Region_Cod}"
+        "content": "<b>Airport Code:</b> {AirportCode}"
       }
 
       const airportLayer = new FeatureLayer({
@@ -266,7 +271,7 @@
         url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Michaels_Airports/FeatureServer",
         renderer: heliRenderer,
         //adding the popup here
-        outFields: ["Region_Cod"],
+        outFields: ["AirportCode"],
         popupTemplate: popupmyAirport
       });
 

@@ -82,7 +82,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////
 
       // Create a polygon geometry
-      var polygon = new Polygon({
+      const polygon = new Polygon({
         rings: [
           [-97.741667, 30.289768], // Top left corner
           [-97.741667, 30.275768], // Bottom left corner
@@ -93,13 +93,13 @@
       });
 
       // Create a symbol for rendering the graphic
-      var fillSymbol = {
+      const fillSymbol = {
         type: "simple-fill", // autocasts as new SimpleFillSymbol()
         color: [227, 139, 79, 0.8],
       };
 
       // Add the geometry and symbol to a new graphic
-      var polygonGraphic = new Graphic({
+      const polygonGraphic = new Graphic({
         geometry: polygon,
         symbol: fillSymbol
       });
@@ -199,19 +199,6 @@
       type: "simple",
       symbol: simpleFillSymbol,
       }
-
-      //creating the point
-      const mypointGraphic = new Graphic({
-        geometry: point,
-        symbol: pointSymbol,
-
-        //adding popup properites
-        attributes: attributes,
-        popupTemplate: popupTemplate
-      });
-        
-      //adding the point to the graphicsLayer
-      graphicsLayer.add(mypointGraphic);
 
       //const to make the airport labels
       const airportLabels = {

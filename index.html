@@ -124,7 +124,18 @@
           width: 3  // points
         }
       };
-      
+
+      //defining the maker style
+      const simpleFillSymbol = {
+        type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+        style: ".",
+        size: "10px",  // pixels
+        outline: {  // autocasts as new SimpleLineSymbol()
+          color: [ 0, 0, 0 ],
+          width: 3  // points
+        }
+      };
+
       //defining popup properties
       const popupTemplate = {
         title: "{Name}",
@@ -176,7 +187,7 @@
       //setting up the icon
       const myairportRenderer = {
       type: "simple",
-      symbol: SimpleFillSymbol,
+      symbol: simpleFillSymbol,
       }
 
       //creating the point

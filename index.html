@@ -38,7 +38,47 @@
     ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor, SimpleMarkerSymbol, Polygon, Polyline, SimpleFillSymbol) {
 
       esriConfig.apiKey = "AAPKfb3b968ef66d4c848e795b3dd01897e8uTic-7qcXbjlpUVMGReQlWKWAjnWq5pH5r7mLxpcFbX1tfR5Y4bLBPhLOwFOm7NL";
-      
+            // Create the map with the GraphicsLayer
+      var map = new Map({
+        basemap: "topo-vector",
+      });
+
+      var view = new MapView({
+        container: "viewDiv", // Reference to the scene div created in step 5
+        map: map, // Reference to the map object created before the scene
+        zoom: 13, // Sets the zoom level based on level of detail (LOD)
+        center: [-97.7431, 30.2672] // Sets the center point of view in lon/lat
+      });
+
+      // Create a new GraphicsLayer and add the graphic to it
+      var graphicsLayer = new GraphicsLayer();
+
+      // Create a polyline geometry
+      var polyline = new Polyline({
+        paths: [
+          [-98.1216, 29.7083], // Bud Dryden Airport
+          [-97.6698, 30.1945]  // New Braunfels
+        ]
+      });
+
+      // Create a symbol for rendering the polyline
+      var lineSymbol = {
+        type: "simple-line", // autocasts as SimpleLineSymbol()
+        color: [0, 0, 0],
+        width: 4
+      };
+
+      // Add the geometry and symbol to a new graphic
+      var polylineGraphic = new Graphic({
+        geometry: polyline,
+        symbol: lineSymbol
+      });
+
+      // Add the graphic to the GraphicsLayer
+      graphicsLayer.add(polylineGraphic);
+
+
+
       // Create a polygon geometry
       var polygon = new Polygon({
         rings: [
@@ -62,51 +102,13 @@
 
       // Add the geometry and symbol to a new graphic
       var polygonGraphic = new Graphic({
-        geometry: 'esri.geometry.Polygon',
+        geometry: polygon,
         symbol: fillSymbol
       });
 
-      // Create a new GraphicsLayer and add the graphic to it
-      var graphicsLayer = new GraphicsLayer();
-      
       graphicsLayer.add(polygonGraphic);
 
-      // Create a polyline geometry
-      var polyline = new Polyline({
-        paths: [
-          [-98.1216, 29.7083], // Bud Dryden Airport
-          [-97.6698, 30.1945]  // New Braunfels
-        ]
-      });
 
-      // Create a symbol for rendering the polyline
-      var lineSymbol = {
-        type: "simple-line", // autocasts as SimpleLineSymbol()
-        style: "solid",
-        color: [0, 0, 0],
-        width: 4
-      };
-
-      // Add the geometry and symbol to a new graphic
-      var polylineGraphic = new Graphic({
-        geometry: polyline,
-        symbol: lineSymbol
-      });
-
-      // Add the graphic to the GraphicsLayer
-      graphicsLayer.add(polylineGraphic);
-
-      // Create the map with the GraphicsLayer
-      var map = new Map({
-        basemap: "topo-vector",
-      });
-
-      var view = new MapView({
-        container: "viewDiv", // Reference to the scene div created in step 5
-        map: map, // Reference to the map object created before the scene
-        zoom: 13, // Sets the zoom level based on level of detail (LOD)
-        center: [-97.7431, 30.2672] // Sets the center point of view in lon/lat
-      });
 
       //defining the geomeotry of the point
       const point = { //Create a point

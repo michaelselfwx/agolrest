@@ -164,6 +164,7 @@
       //adding the feature layer to the map
       map.add(usaeduLayer);
 
+
       //setting up the icon
       const airportRenderer = {
       type: "simple",
@@ -177,7 +178,6 @@
       }
 
       //const to make the airport labels
-
       const airportLabels = {
         symbol: {
           type: "text",
@@ -197,31 +197,7 @@
           expression: "$feature.Fac_Name"
         }
       };
-      //setting up the icon
-      const heliRenderer = {
-            type: "simple",
-            symbol: simpleMarkerSymbol,
-            }
-
-      const heliLabels = {
-        symbol: {
-          type: "text",
-          color: "#MMMMMM",
-          haloColor: "#5E8D74",
-          haloSize: "2px",
-          font: {
-            size: "12px",
-            family: "Noto Sans",
-            style: "italic",
-            weight: "normal"
-          }
-        },
-
-        labelPlacement: "above-center",
-        labelExpressionInfo: {
-          expression: "$feature.Fac_Name"
-        }
-      };
+ 
 
       // Define a pop-up for airportLayer
       const popupAirport = {
@@ -252,24 +228,14 @@
       //adding the feature layer to the map
       map.add(airportLayer);
 
-      const heliLayer = new FeatureLayer({
-        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
-        renderer: heliRenderer,  //calling the icon
-
-        definitionExpression: "Fac_Type = 'Based_Heli'", //adding sql to filter for airports
-
-        labelingInfo: [heliLabels] //adding the labels 
-
-
-      });
-
-      //adding the feature layer to the map
-      map.add(heliLayer);
 
       //adding the const for the feature layer
       const myAirports = new FeatureLayer({
         url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Michaels_Airports/FeatureServer",
         renderer: myairportRenderer,
+
+        labelingInfo: [airportLabels], //adding the labels 
+
         //adding the popup here
         outFields: ["AirportCode"],
         popupTemplate: popupmyAirport
@@ -278,6 +244,7 @@
       //adding the feature layer to the map
       map.add(myAirports);
 
+      
       // Set the point layer's LayerInfo
       const pointInfos = {
         layer: myAirports

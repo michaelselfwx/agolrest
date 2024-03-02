@@ -29,11 +29,13 @@
 
       "esri/symbols/SimpleMarkerSymbol",
 
+      "esri/symbols/SimpleFillSymbol",
+
       "esri/geometry/Polygon",
 
       "esri/geometry/Polyline"
 
-    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor, SimpleMarkerSymbol, Polygon, Polyline) {
+    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor, SimpleMarkerSymbol, Polygon, Polyline, SimpleFillSymbol) {
 
       esriConfig.apiKey = "AAPKfb3b968ef66d4c848e795b3dd01897e8uTic-7qcXbjlpUVMGReQlWKWAjnWq5pH5r7mLxpcFbX1tfR5Y4bLBPhLOwFOm7NL";
       
@@ -122,7 +124,7 @@
           width: 3  // points
         }
       };
-
+      
       //defining popup properties
       const popupTemplate = {
         title: "{Name}",

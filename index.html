@@ -173,7 +173,7 @@
       //setting up the icon
       const myairportRenderer = {
       type: "simple",
-      symbol: simpleMarkerSymbol,
+      symbol: point,
       }
 
       //const to make the airport labels
@@ -269,7 +269,7 @@
       //adding the const for the feature layer
       const myAirports = new FeatureLayer({
         url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Michaels_Airports/FeatureServer",
-        renderer: heliRenderer,
+        renderer: myairportRenderer,
         //adding the popup here
         outFields: ["AirportCode"],
         popupTemplate: popupmyAirport

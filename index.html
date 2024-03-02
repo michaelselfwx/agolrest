@@ -68,6 +68,7 @@
 
       // Create a new GraphicsLayer and add the graphic to it
       var graphicsLayer = new GraphicsLayer();
+      
       graphicsLayer.add(polygonGraphic);
 
       // Create a polyline geometry
@@ -81,6 +82,7 @@
       // Create a symbol for rendering the polyline
       var lineSymbol = {
         type: "simple-line", // autocasts as SimpleLineSymbol()
+        style: "solid",
         color: [226, 119, 40],
         width: 4
       };

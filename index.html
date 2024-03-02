@@ -280,6 +280,7 @@
       //adding the feature layer to the map
       map.add(myAirports);
 
+      map.add(graphicsLayer);
 
       // Set the point layer's LayerInfo
       const pointInfos = {
@@ -294,8 +295,6 @@
 
       // Add the widget to the view
       view.ui.add(editor, "top-right");
-
-      map.add(graphicsLayer);
 
     });
   </script>

@@ -109,7 +109,7 @@
 
       //defining the geomeotry of the point
       const point = { //Create a point
-        type: "simple-marker",
+        type: "point",
         style: "triangle",
         longitude: -97.750689,    //long lat of Stevie Ray Vaughan Statue
         latitude: 30.263098 
@@ -150,7 +150,7 @@
       //creating the point
       const pointGraphic = new Graphic({
         type: "point",
-        symbol: point,
+        symbol: fillSymbol,
 
         //adding popup properites
         attributes: attributes,

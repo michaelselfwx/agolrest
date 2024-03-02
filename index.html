@@ -109,7 +109,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////
 
       //defining the geomeotry of the point
-      const point = { //Create a point
+      var point = { //Create a point
         type: "point",
         longitude: -97.750689,    //long lat of Stevie Ray Vaughan Statue
         latitude: 30.263098 
@@ -125,10 +125,16 @@
         Description: "A bronze sculpture of Stevie Ray Vaughan by Ralph Helmick"
       }
 
+      // Create a symbol for rendering the graphic
+      var pointSymbol = {
+        type: "simple-marker", // autocasts as new SimpleFillSymbol()
+        color: [227, 139, 79, 0.8],
+      };
+
       //creating the point
       const pointGraphic = new Graphic({
         geometry: point,
-        symbol: fillSymbol,
+        symbol: pointSymbol,
 
         //adding popup properites
         attributes: attributes,
@@ -196,8 +202,8 @@
 
       //creating the point
       const mypointGraphic = new Graphic({
-        type: "point",
-        symbol: point,
+        geometry: point,
+        symbol: pointSymbol,
 
         //adding popup properites
         attributes: attributes,

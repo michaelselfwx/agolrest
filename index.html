@@ -55,25 +55,20 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-      // Create a polyline geometry
-      const polyline = new Polyline({
-        paths: [
-          [-98.1216, 29.7083], // Bud Dryden Airport
-          [-97.6698, 30.1945]  // New Braunfels
-        ]
-      });
+      let paths = [
+        [-98.1216, 29.7083], // Bud Dryden Airport
+        [-97.6698, 30.1945]  // New Braunfels
+      ]
 
-      // Create a symbol for rendering the polyline
-      const lineSymbol = {
-        type: "simple-line", 
-        color: [0, 0, 0],
-        width: 4
-      };
+      let polyline = new Polyline({
+        hasZ: false,
+        hasM: true,
+        paths: paths,
+      });
 
       // Add the geometry and symbol to a new graphic
       const polylineGraphic = new Graphic({
         geometry: polyline,
-        symbol: lineSymbol
       });
 
       // Add the graphic to the GraphicsLayer

@@ -224,6 +224,12 @@
         "content": "<b>FID:</b> {FID}<br><b>Elevation:</b> {Elevation}<br>"
       }
 
+      // Define a pop-up for myairportLayer
+      const popupmyAirport = {
+        "title": "My Airports",
+        "content": "<b>Region_Cod:</b> {Region_Cod}"
+      }
+
       const airportLayer = new FeatureLayer({
         url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
         renderer: airportRenderer,  //calling the icon
@@ -260,8 +266,8 @@
         url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Michaels_Airports/FeatureServer",
         renderer: heliRenderer,
         //adding the popup here
-        outFields: ["AirportCode"],
-
+        outFields: ["Region_Cod"],
+        popupTemplate: popupmyAirport
       });
 
       //adding the feature layer to the map

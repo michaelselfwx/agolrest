@@ -39,11 +39,11 @@
 
       esriConfig.apiKey = "AAPKfb3b968ef66d4c848e795b3dd01897e8uTic-7qcXbjlpUVMGReQlWKWAjnWq5pH5r7mLxpcFbX1tfR5Y4bLBPhLOwFOm7NL";
             // Create the map with the GraphicsLayer
-      var map = new Map({
+      const map = new Map({
         basemap: "topo-vector",
       });
 
-      var view = new MapView({
+      const view = new MapView({
         container: "viewDiv", // Reference to the scene div created in step 5
         map: map, // Reference to the map object created before the scene
         zoom: 13, // Sets the zoom level based on level of detail (LOD)
@@ -51,7 +51,9 @@
       });
 
       // Create a new GraphicsLayer and add the graphic to it
-      var graphicsLayer = new GraphicsLayer();
+      const graphicsLayer = new GraphicsLayer();
+
+//////////////////////////////////////////////////////////////////////////////////////////
 
       // Create a polyline geometry
       var polyline = new Polyline({
@@ -77,7 +79,7 @@
       // Add the graphic to the GraphicsLayer
       graphicsLayer.add(polylineGraphic);
 
-
+//////////////////////////////////////////////////////////////////////////////////////////
 
       // Create a polygon geometry
       var polygon = new Polygon({
@@ -108,7 +110,7 @@
 
       graphicsLayer.add(polygonGraphic);
 
-
+//////////////////////////////////////////////////////////////////////////////////////////
 
       //defining the geomeotry of the point
       const point = { //Create a point

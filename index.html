@@ -78,6 +78,7 @@
       // Add the geometry and symbol to a new graphic
       const polylineGraphic = new Graphic({
         geometry: polyline,
+        symbol: lineSymbol
       });
 
       // Add the graphic to the GraphicsLayer
@@ -161,7 +162,7 @@
 
       //defining the maker style
       const simpleFillSymbol = {
-        type: "simple-fill",  // autocasts as new SimpleMarkerSymbol()
+        type: "simple-fill",  // autocasts as new SimpleFillSymbol()
         style: "circle",
         size: "10px",  // pixels
         outline: {  // autocasts as new SimpleLineSymbol()
@@ -170,6 +171,7 @@
         }
       };
 
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
       // Define a pop-up for usaeduLayer
       const popupEduusa = {

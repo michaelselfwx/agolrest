@@ -57,19 +57,15 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-      let paths = [
+      const polyline = new Polyline({
+        paths: [
         [-98.1216, 29.7083], // Bud Dryden Airport
         [-97.6698, 30.1945]  // New Braunfels
       ]
-
-      let polyline = new Polyline({
-        hasZ: false,
-        hasM: true,
-        paths: paths,
       });
 
       // Create a symbol for rendering the polyline
-      var lineSymbol = {
+      const lineSymbol = {
         type: "simple-line", // autocasts as SimpleLineSymbol()
         color: [0, 0, 0],
         width: 4

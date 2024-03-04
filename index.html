@@ -145,8 +145,7 @@
       
       //adding the point to the graphicsLayer
       graphicsLayer.add(pointGraphic);
-      map.add(graphicsLayer);
-      
+
 //////////////////////////////////////////////////////////////////////////////////////////
 
       //defining the maker style
@@ -162,7 +161,7 @@
 
       //defining the maker style
       const simpleFillSymbol = {
-        type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+        type: "simple-fill",  // autocasts as new SimpleMarkerSymbol()
         style: "circle",
         size: "10px",  // pixels
         outline: {  // autocasts as new SimpleLineSymbol()

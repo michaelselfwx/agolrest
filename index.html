@@ -110,12 +110,10 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-      //defining the geomeotry of the point
-      var point = { //Create a point
-        type: "point",
-        longitude: -97.750689,    //long lat of Stevie Ray Vaughan Statue
-        latitude: 30.263098 
-      };
+      const point = new Point({
+        longitude: -97.750689,
+        latitude: 30.263098
+      });
       
       //defining popup properties
       const popupTemplate = {

@@ -199,6 +199,16 @@
         }
       };
 
+      //defining the maker style
+      const myairportSymbol = {
+        type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+        style: "circle",
+        size: "5px",  // pixels
+        outline: {  // autocasts as new SimpleLineSymbol()
+          color: [ 0, 0, 0 ],
+          width: 3  // points
+        }
+      };
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
       // Define a pop-up for usaeduLayer
@@ -229,7 +239,7 @@
       //setting up the icon
       const myairportRenderer = {
       type: "simple",
-      symbol: simpleMarkerSymbol,
+      symbol: myairportSymbol,
       }
 
       //const to make the airport labels

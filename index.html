@@ -66,6 +66,17 @@
       ]
       };
 
+      //defining popup properties
+      const linepopupTemplate = {
+        title: "{Name}",
+        content: "{Description}"
+      }
+      const lineattributes = {
+        Name: "AUS to New Braunfels",
+        Description: "This polyline shows the direct line to New Braunfels from the main airport in Austin, TX."
+      }
+
+
       // Create a symbol for rendering the polyline
       const lineSymbol = {
         type: "simple-line", // autocasts as SimpleLineSymbol()
@@ -76,7 +87,11 @@
       // Add the geometry and symbol to a new graphic
       const polylineGraphic = new Graphic({
         geometry: polyline,
-        symbol: lineSymbol
+        symbol: lineSymbol,
+
+        //adding popup properites
+        attributes: lineattributes,
+        popupTemplate: linepopupTemplate
       });
 
       // Add the graphic to the GraphicsLayer
@@ -96,6 +111,16 @@
         ]
       };
 
+      //defining popup properties
+      const polypopupTemplate = {
+        title: "{Name}",
+        content: "{Description}"
+      }
+      const polyattributes = {
+        Name: "University of Texas - Austin",
+        Description: "This polygon shows the relative extent of UT Austin's campus in downtown Austin, TX. The campus is home to the Longhorns, who are not as good as the Florida Gators."
+      }
+
       // Create a symbol for rendering the graphic
       const fillSymbol = {
         type: "simple-fill", // autocasts as new SimpleFillSymbol()
@@ -105,7 +130,11 @@
       // Add the geometry and symbol to a new graphic
       const polygonGraphic = new Graphic({
         geometry: polygon,
-        symbol: fillSymbol
+        symbol: fillSymbol,
+
+        //adding popup properites
+        attributes: polyattributes,
+        popupTemplate: polypopupTemplate
       });
 
       graphicsLayer.add(polygonGraphic);

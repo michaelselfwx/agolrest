@@ -260,6 +260,27 @@
         }
       };
  
+      //const to make the airport labels
+      const myairportLabels = {
+        symbol: {
+          type: "text",
+          color: "#FFFFFF",
+          haloColor: "#5E8D74",
+          haloSize: "2px",
+          font: {
+            size: "12px",
+            family: "Noto Sans",
+            style: "italic",
+            weight: "normal"
+          }
+        },
+
+        labelPlacement: "above-center",
+        labelExpressionInfo: {
+          expression: "$feature.Fac_Name"
+        }
+      };
+
 
       // Define a pop-up for airportLayer
       const popupAirport = {
@@ -296,7 +317,7 @@
         url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Michaels_Airports/FeatureServer",
         renderer: myairportRenderer,
 
-        labelingInfo: [airportLabels], //adding the labels 
+        labelingInfo: [myairportLabels], //adding the labels 
 
         //adding the popup here
         outFields: ["AirportCode"],

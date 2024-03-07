@@ -206,6 +206,16 @@
         size: "15px",  // pixels
       };
       
+      //defining the maker style
+      const heliportSymbol = {
+        type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+        style: ".",
+        size: "10px",  // pixels
+        outline: {  // autocasts as new SimpleLineSymbol()
+          color: [ 0, 0, 0 ],
+          width: 3  // points
+        }
+      };
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
       // Define a pop-up for usaeduLayer
@@ -237,6 +247,12 @@
       const myairportRenderer = {
       type: "simple",
       symbol: myairportSymbol,
+      }
+
+      //setting up the icon
+      const heliportRenderer = {
+      type: "simple",
+      symbol: heliportSymbol,
       }
 
       //const to make the airport labels
@@ -281,6 +297,26 @@
         }
       };
 
+      //const to make the airport labels
+      const heliportLabels = {
+        symbol: {
+          type: "text",
+          color: "#0000FF",
+          haloColor: "#5E8D74",
+          haloSize: "2px",
+          font: {
+            size: "12px",
+            family: "Noto Sans",
+            style: "italic",
+            weight: "normal"
+          }
+        },
+
+        labelPlacement: "above-center",
+        labelExpressionInfo: {
+          expression: "$feature.Fac_Name"
+        }
+      };
 
       // Define a pop-up for airportLayer
       const popupAirport = {
@@ -294,6 +330,11 @@
         "content": "<b>Airport Code:</b> {AirportCode}"
       }
 
+      const popupHeliport = {
+        "title": "Heliports",
+        "content": "<b>FID:</b> {FID}<br><b>Elevation:</b> {Elevation}<br>"
+      }
+
       const airportLayer = new FeatureLayer({
         url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
         renderer: airportRenderer,  //calling the icon
@@ -305,6 +346,20 @@
         //adding the popup here
         outFields: ["FID","Elevation"],
         popupTemplate: popupAirport
+
+      });
+
+      const heliportLayer = new FeatureLayer({
+        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
+        renderer: heliportRenderer,  //calling the icon
+
+        definitionExpression: "Fac_Type = 'HELIPORT'", //adding sql to filter for airports
+
+        labelingInfo: [heliportLabels], //adding the labels 
+
+        //adding the popup here
+        outFields: ["FID","Elevation"],
+        popupTemplate: popupHeliport
 
       });
 

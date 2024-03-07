@@ -35,9 +35,11 @@
 
       "esri/geometry/Polyline",
 
-      "esri/geometry/Point"
+      "esri/geometry/Point",
 
-    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor, SimpleMarkerSymbol, Polygon, Polyline, SimpleFillSymbol, Point) {
+      "esri/widgets/Legend"
+
+    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor, SimpleMarkerSymbol, Polygon, Polyline, SimpleFillSymbol, Point, Legend) {
 
       esriConfig.apiKey = "AAPKfb3b968ef66d4c848e795b3dd01897e8uTic-7qcXbjlpUVMGReQlWKWAjnWq5pH5r7mLxpcFbX1tfR5Y4bLBPhLOwFOm7NL";
       // esriConfig.apiKey = "";
@@ -399,6 +401,30 @@
 
       // Add the widget to the view
       view.ui.add(editor, "top-right");
+
+      const legend = new Legend({
+        view: view,
+        layerInfos: [
+          {
+            layer: myAirports,
+            title: "My Airports"
+          },
+          {
+            layer: usaeduLayer,
+            title: "Colleges and Universities"
+          },
+          {
+            layer: airportLayer,
+            title: "Airports"
+          },
+          {
+            layer: heliportLayer,
+            title: "Heliports"
+          }
+        ]
+      });
+
+      view.ui.add(legend, "bottom-right");
 
     });
   </script>

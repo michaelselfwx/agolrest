@@ -436,8 +436,12 @@
       });
 
       // Add widget to the top right corner of the view
-      view.ui.add(search, "top-center");
-      
+      view.ui.add(search, 
+      {
+        position: "top-left",
+        index: 2
+      });
+
     });
   </script>
 

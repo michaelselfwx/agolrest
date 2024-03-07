@@ -58,8 +58,9 @@
       // Create a new GraphicsLayer and add the graphic to it
       const graphicsLayer = new GraphicsLayer();
 
-//////////////////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////////////////////
 
+      // Create a polyline geometry
       const polyline = {
         type: "polyline",
         paths: [
@@ -99,7 +100,7 @@
       // Add the graphic to the GraphicsLayer
       graphicsLayer.add(polylineGraphic);
 
-//////////////////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       // Create a polygon geometry
       const polygon = {
@@ -141,8 +142,9 @@
 
       graphicsLayer.add(polygonGraphic);
 
-//////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+      // Create a point geometry for the statue point
       const point = new Point({
         longitude: -97.750689,
         latitude: 30.263098
@@ -177,9 +179,9 @@
       //adding the point to the graphicsLayer
       graphicsLayer.add(pointGraphic);
 
-//////////////////////////////////////////////////////////////////////////////////////////
+      ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-      //defining the maker style
+      //defining the airport marker style
       const simpleMarkerSymbol = {
         type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
         style: "x",
@@ -190,25 +192,15 @@
         }
       };
 
-      //defining the maker style
-      const simpleFillSymbol = {
-        type: "simple-fill",  // autocasts as new SimpleFillSymbol()
-        style: "circle",
-        size: "10px",  // pixels
-        outline: {  // autocasts as new SimpleLineSymbol()
-          color: [ 0, 0, 0 ],
-          width: 3  // points
-        }
-      };
 
-      //defining the maker style
+      //defining the myairport marker style
       const myairportSymbol = {
         type: "simple-marker",  // autocasts as new SimpleFillSymbol()
         style: "circle",
         size: "15px",  // pixels
       };
       
-      //defining the maker style
+      //defining the heliport marker style
       const heliportSymbol = {
         type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
         style: "diamond",
@@ -218,26 +210,8 @@
           width: 3  // points
         }
       };
-      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-      // Define a pop-up for usaeduLayer
-      const popupEduusa = {
-        "title": "EDUs",
-        "content": "<b>Name:</b> {INSTNM}<br><b>Sector:</b> {SECTOR}<br>"
-      }
 
-      //adding the const for the feature layer
-      const usaeduLayer = new FeatureLayer({
-        url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer",
-
-        //adding the popup here
-        outFields: ["INSTNM","SECTOR"],
-        popupTemplate: popupEduusa
-      });
-
-      //adding the feature layer to the map
-      map.add(usaeduLayer);
-
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       //setting up the icon
       const airportRenderer = {
@@ -256,6 +230,8 @@
       type: "simple",
       symbol: heliportSymbol,
       }
+
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       //const to make the airport labels
       const airportLabels = {
@@ -278,7 +254,7 @@
         }
       };
  
-      //const to make the airport labels
+      //const to make the myairport labels
       const myairportLabels = {
         symbol: {
           type: "text",
@@ -299,7 +275,7 @@
         }
       };
 
-      //const to make the airport labels
+      //const to make the heliport labels
       const heliportLabels = {
         symbol: {
           type: "text",
@@ -320,6 +296,9 @@
         }
       };
 
+      ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
       // Define a pop-up for airportLayer
       const popupAirport = {
         "title": "Airports",
@@ -331,12 +310,22 @@
         "title": "My Airports",
         "content": "<b>Airport Code:</b> {AirportCode}"
       }
+      
+      // Define a pop-up for usaeduLayer
+      const popupEduusa = {
+        "title": "EDUs",
+        "content": "<b>Name:</b> {INSTNM}<br><b>Sector:</b> {SECTOR}<br>"
+      }
 
+      // Define a pop-up for heliportLayer
       const popupHeliport = {
         "title": "Heliports",
         "content": "<b>FID:</b> {FID}<br><b>Elevation:</b> {Elevation}<br>"
       }
 
+      ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+      //adding the const for the airport feature layer
       const airportLayer = new FeatureLayer({
         url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
         renderer: airportRenderer,  //calling the icon
@@ -348,8 +337,18 @@
         //adding the popup here
         outFields: ["FID","Elevation"],
         popupTemplate: popupAirport
-
       });
+
+
+      //adding the const for the usa education feature layer
+      const usaeduLayer = new FeatureLayer({
+        url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer",
+
+        //adding the popup here
+        outFields: ["INSTNM","SECTOR"],
+        popupTemplate: popupEduusa
+      });
+
 
       const heliportLayer = new FeatureLayer({
         url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
@@ -362,11 +361,7 @@
         //adding the popup here
         outFields: ["FID","Elevation"],
         popupTemplate: popupHeliport
-
       });
-
-      //adding the feature layer to the map
-      map.add(airportLayer);
 
 
       //adding the const for the feature layer
@@ -381,17 +376,20 @@
         popupTemplate: popupmyAirport
       });
 
-      //adding the feature layer to the map
+      //adding these feature layers to the map
+      map.add(airportLayer);
       map.add(myAirports);
-
+      map.add(usaeduLayer);
       map.add(heliportLayer);
-
       map.add(graphicsLayer);
+
+//////////////////////////////////////////////////////////////////////////////////////////
 
       // Set the point layer's LayerInfo
       const pointInfos = {
         layer: myAirports
       }
+
 
       // Begin Editor constructor
       const editor = new Editor({
@@ -402,6 +400,8 @@
       // Add the widget to the view
       view.ui.add(editor, "top-right");
 
+
+      // Create a new Legend widget instance
       const legend = new Legend({
         view: view,
         layerInfos: [
@@ -424,6 +424,7 @@
         ]
       });
 
+      // Add widget to the bottom left corner of the view
       view.ui.add(legend, "bottom-left");
 
     });

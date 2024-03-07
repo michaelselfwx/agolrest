@@ -37,9 +37,11 @@
 
       "esri/geometry/Point",
 
-      "esri/widgets/Legend"
+      "esri/widgets/Legend",
 
-    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor, SimpleMarkerSymbol, Polygon, Polyline, SimpleFillSymbol, Point, Legend) {
+      "esri/widgets/Search"
+
+    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor, SimpleMarkerSymbol, Polygon, Polyline, SimpleFillSymbol, Point, Legend, Search) {
 
       esriConfig.apiKey = "AAPKfb3b968ef66d4c848e795b3dd01897e8uTic-7qcXbjlpUVMGReQlWKWAjnWq5pH5r7mLxpcFbX1tfR5Y4bLBPhLOwFOm7NL";
       // esriConfig.apiKey = "";
@@ -427,6 +429,15 @@
       // Add widget to the bottom left corner of the view
       view.ui.add(legend, "bottom-left");
 
+
+      // Create a new Search widget instance
+      const search = new Search({
+        view: view
+      });
+
+      // Add widget to the top right corner of the view
+      view.ui.add(search, "top-center");
+      
     });
   </script>
 
